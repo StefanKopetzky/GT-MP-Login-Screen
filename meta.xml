@@ -1,16 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <meta>
-	<info name="New Race" author="Neta" type="script" async="true" />
-	
-	<!-- Serverside Scripts-->
+	<info name="GT-MP Login Screen" author="Neta" type="script" async="true" />
 	<script src="Login.cs" type="server" lang="csharp" />
-	
-	<!-- Clientside Scripts -->
 	<script src="Login.js" type="client" lang="javascript" />
 	
 	<assembly ref="System.Data.dll" />
 	<assembly ref="System.Xml.dll" />
-	<assembly ref="Newtonsoft.Json.dll" />
 </meta>
 
