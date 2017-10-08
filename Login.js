@@ -132,7 +132,7 @@ API.onKeyDown.connect(function (sender, e) {
                 default:
                     switch (cursorIndex) {
                         case 0:
-                            username += API.getCharFromKey(e.KeyCode, e.Shift, e.Control, e.Alt);
+                            username += API.getCharFromKey(e.KeyValue, e.Shift, e.Control, e.Alt);
                             break;
                         case 1:
                             password += API.getCharFromKey(e.KeyCode, e.Shift, e.Control, e.Alt);
