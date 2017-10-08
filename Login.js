@@ -135,7 +135,7 @@ API.onKeyDown.connect(function (sender, e) {
                             username += API.getCharFromKey(e.KeyValue, e.Shift, e.Control, e.Alt);
                             break;
                         case 1:
-                            password += API.getCharFromKey(e.KeyCode, e.Shift, e.Control, e.Alt);
+                            password += API.getCharFromKey(e.KeyValue, e.Shift, e.Control, e.Alt);
                             break;
                     }
                     break;
