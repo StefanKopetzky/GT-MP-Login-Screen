@@ -95,10 +95,8 @@ function DrawLoginScreen() {
 	API.drawText("Login", posX + (Width / 2), PasswordY + 135, 0.7, 255, 255, 255, 255, 4, 1, false, false, 500);
 }
 
-var LockKey = false;
 API.onKeyDown.connect(function (sender, e) {
 	if (LoginUIOpen) {
-		if (LockKey == false) {
 			switch (e.KeyCode) {
 				case Keys.Tab:
 					switch (cursorIndex) {
@@ -157,19 +155,8 @@ API.onKeyDown.connect(function (sender, e) {
 					}
 					break;
 			}
-			LockKey = true;
-			API.after(50, "enableKeys");
-		}
 	}
 })
-
-API.onKeyUp.connect(function (sender, e) {
-	LockKey = false;
-})
-
-function enableKeys() {
-	LockKey = false;
-}
 
 function LoginButtonTriggered() {
 	LoginUIOpen = false;

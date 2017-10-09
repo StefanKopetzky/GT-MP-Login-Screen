@@ -76,81 +76,70 @@ function DrawLoginScreen() {
     }
     API.drawText("Login", posX + (Width / 2), PasswordY + 135, 0.7, 255, 255, 255, 255, 4, 1, false, false, 500);
 }
-var LockKey = false;
 API.onKeyDown.connect(function (sender, e) {
     if (LoginUIOpen) {
-        if (LockKey == false) {
-            switch (e.KeyCode) {
-                case Keys.Tab:
-                    switch (cursorIndex) {
-                        case 0:
-                            cursorIndex = 1;
-                            break;
-                        case 1:
-                            cursorIndex = 2;
-                            break;
-                        case 2:
-                            cursorIndex = 0;
-                            break;
-                    }
-                    break;
-                case Keys.Up:
-                    if (cursorIndex == 0) {
+        switch (e.KeyCode) {
+            case Keys.Tab:
+                switch (cursorIndex) {
+                    case 0:
+                        cursorIndex = 1;
+                        break;
+                    case 1:
                         cursorIndex = 2;
-                    }
-                    else {
-                        cursorIndex--;
-                    }
-                    break;
-                case Keys.Down:
-                    if (cursorIndex == 2) {
+                        break;
+                    case 2:
                         cursorIndex = 0;
-                    }
-                    else {
-                        cursorIndex++;
-                    }
-                    break;
-                case Keys.Enter:
-                    if (cursorIndex == 2) {
-                        LoginButtonTriggered();
-                    }
-                    break;
-                case Keys.Back:
-                    switch (cursorIndex) {
-                        case 0:
-                            if (username.length != 0) {
-                                username = username.substring(0, username.length - 1);
-                            }
-                            break;
-                        case 1:
-                            if (password.length != 0) {
-                                password = password.substring(0, password.length - 1);
-                            }
-                            break;
-                    }
-                    break;
-                default:
-                    switch (cursorIndex) {
-                        case 0:
-                            username += API.getCharFromKey(e.KeyValue, e.Shift, e.Control, e.Alt);
-                            break;
-                        case 1:
-                            password += API.getCharFromKey(e.KeyValue, e.Shift, e.Control, e.Alt);
-                            break;
-                    }
-                    break;
-            }
-            LockKey = true;
-            API.after(50, "enableKeys");
+                        break;
+                }
+                break;
+            case Keys.Up:
+                if (cursorIndex == 0) {
+                    cursorIndex = 2;
+                }
+                else {
+                    cursorIndex--;
+                }
+                break;
+            case Keys.Down:
+                if (cursorIndex == 2) {
+                    cursorIndex = 0;
+                }
+                else {
+                    cursorIndex++;
+                }
+                break;
+            case Keys.Enter:
+                if (cursorIndex == 2) {
+                    LoginButtonTriggered();
+                }
+                break;
+            case Keys.Back:
+                switch (cursorIndex) {
+                    case 0:
+                        if (username.length != 0) {
+                            username = username.substring(0, username.length - 1);
+                        }
+                        break;
+                    case 1:
+                        if (password.length != 0) {
+                            password = password.substring(0, password.length - 1);
+                        }
+                        break;
+                }
+                break;
+            default:
+                switch (cursorIndex) {
+                    case 0:
+                        username += API.getCharFromKey(e.KeyValue, e.Shift, e.Control, e.Alt);
+                        break;
+                    case 1:
+                        password += API.getCharFromKey(e.KeyValue, e.Shift, e.Control, e.Alt);
+                        break;
+                }
+                break;
         }
     }
 });
-API.onKeyUp.connect(function (sender, e) {
-    LockKey = false;
-});
-function enableKeys() {
-    LockKey = false;
-}
 function LoginButtonTriggered() {
     LoginUIOpen = false;
     API.setCanOpenChat(true);
