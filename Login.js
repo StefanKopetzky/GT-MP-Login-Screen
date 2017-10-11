@@ -5,10 +5,14 @@ API.onServerEventTrigger.connect(function (eventName, args) {
             LoginUIOpen = args[0];
             if (args[0]) {
                 API.setCanOpenChat(false);
+                API.disableVehicleEnteringKeys(true);
+                API.disableAlternativeMainMenuKey(true);
                 cursorIndex = 0;
             }
             else {
                 API.setCanOpenChat(true);
+                API.disableVehicleEnteringKeys(false);
+                API.disableAlternativeMainMenuKey(false);
             }
             break;
     }
@@ -17,8 +21,6 @@ API.onUpdate.connect(function () {
     if (LoginUIOpen) {
         DrawLoginScreen();
         API.disableAllControlsThisFrame();
-        API.disableVehicleEnteringKeys(true);
-        API.disableAlternativeMainMenuKey(true);
     }
 });
 var LoginUIOpen = false;
